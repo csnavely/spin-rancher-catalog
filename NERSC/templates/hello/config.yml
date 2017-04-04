@@ -1,0 +1,6 @@
+name: Hello
+description: |
+  A simple PHP/MySQL web site for demonstrating the Spin system.
+version: v1.0.0
+category: workshop
+maintainer: ISG
