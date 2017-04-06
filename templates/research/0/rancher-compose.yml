@@ -5,27 +5,27 @@ catalog:
   version: v1.0.0
   questions:
     - variable: web_server_port
-      type: int
+      type: "int"
       required: true
       label: "Web server port"
       description: "What port should the web server run on?"
     - variable: web_style_dir
-      type: string
+      type: "string"
       required: true
       label: "Web style directory"
       description: "What directory contains your web styles?"
       default: "/spin/shared/prod/research/styles/nersc"
     - variable: mysql_password
-      type: password
+      type: "password"
       required: true
       label: "MySQL password"
       description: "What should the MySQL password be set to?"
     - variable: research_area
-      type: enum
+      type: "enum"
       options:
-        - insects
-	- particles
-	- planets
+        - "insects"
+	- "particles"
+	- "planets"
       required: true
       label: "Research area"
       description: "What is your research area? (This will preload a small database on startup.)"
@@ -60,7 +60,7 @@ services:
         priority: 1
         protocol: http
         service: apache
-        source_port: ${web_server_port}
+        source_port: 8181
         target_port: 80
     health_check:
       response_timeout: 2000
