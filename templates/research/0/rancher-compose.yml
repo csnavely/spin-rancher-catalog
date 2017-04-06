@@ -24,8 +24,8 @@ catalog:
       type: "enum"
       options:
         - "insects"
-	- "particles"
-	- "planets"
+        - "particles"
+        - "planets"
       required: true
       label: "Research area"
       description: "What is your research area? (This will preload a small database on startup.)"
