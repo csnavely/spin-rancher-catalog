@@ -28,6 +28,7 @@ services:
       RESEARCH_AREA: ${research_area}
     stdin_open: true
     volumes:
+    - /spin/shared/prod/research/styles/index.php:/var/www/html/index.php:ro
     - ${web_style_dir}:/var/www/html/styles:ro
     tty: true
     links:
