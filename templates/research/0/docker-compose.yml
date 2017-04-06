@@ -1,0 +1,35 @@
+version: '2'
+services:
+  lb:
+    image: rancher/lb-service-haproxy:v0.5.9
+    ports:
+    - ${web_server_port}:${web_server_port}/tcp
+    links:
+    - apache:apache
+    labels:
+      io.rancher.container.agent.role: environmentAdmin
+      io.rancher.container.create_agent: 'true'
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_USER: research
+      MYSQL_PASSWORD: ${mysql_password}
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
+    stdin_open: true
+    volumes:
+    - /spin/shared/prod/research/dbs/${research_area}.sql:/docker-entrypoint-initdb.d/research.sql
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+  apache:
+    image: php:5.6-apache
+    environment:
+      RESEARCH_AREA: ${research_area}
+    stdin_open: true
+    volumes:
+    - ${web_style_dir}:/var/www/html/styles:ro
+    tty: true
+    links:
+    - mysql:db
+    labels:
+      io.rancher.container.pull_image: always

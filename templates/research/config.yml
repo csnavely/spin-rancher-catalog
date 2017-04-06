@@ -1,0 +1,6 @@
+name: My Research Portal
+description: |
+  A simple PHP/MySQL web site for demonstrating the Spin system.
+version: v1.0.0
+category: Training and Workshops
+maintainer: NERSC Infrastructure Services Group

@@ -1,0 +1,71 @@
+version: '2'
+catalog:
+  name: "My Research Portal"
+  description: "A simple PHP/MySQL web site for demonstrating the Spin system."
+  version: v1.0.0
+  questions:
+    - variable: web_server_port
+      type: int
+      required: true
+      label: "Web server port"
+      description: "What port should the web server run on?"
+    - variable: web_style_dir
+      type: string
+      required: true
+      label: "Web style directory"
+      description: "What directory contains your web styles?"
+      default: "/spin/shared/prod/research/styles/nersc"
+    - variable: mysql_password
+      type: password
+      required: true
+      label: "MySQL password"
+      description: "What should the MySQL password be set to?"
+    - variable: research_area
+      type: enum
+      options:
+        - insects
+	- particles
+	- planets
+      required: true
+      label: "Research area"
+      description: "What is your research area? (This will preload a small database on startup.)"
+services:
+  mysql:
+    scale: 1
+    start_on_create: true
+    health_check:
+      healthy_threshold: 2
+      response_timeout: 2000
+      port: 3306
+      unhealthy_threshold: 3
+      interval: 2000
+      strategy: recreate
+  apache:
+    scale: 1
+    start_on_create: true
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 80
+      unhealthy_threshold: 3
+      interval: 2000
+      strategy: recreate
+  lb:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - hostname: ''
+        priority: 1
+        protocol: http
+        service: apache
+        source_port: ${web_server_port}
+        target_port: 80
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      interval: 2000
+      strategy: recreate
