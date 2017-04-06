@@ -60,7 +60,7 @@ services:
         priority: 1
         protocol: http
         service: apache
-        source_port: 8181
+        source_port: ${web_server_port}
         target_port: 80
     health_check:
       response_timeout: 2000
