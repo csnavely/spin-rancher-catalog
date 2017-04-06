@@ -12,9 +12,10 @@ services:
   mysql:
     image: mysql
     environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
       MYSQL_USER: research
       MYSQL_PASSWORD: ${mysql_password}
-      MYSQL_RANDOM_ROOT_PASSWORD: yes
+      MYSQL_DATABASE: "research"
     stdin_open: true
     volumes:
     - /spin/shared/prod/research/dbs/${research_area}.sql:/docker-entrypoint-initdb.d/research.sql
