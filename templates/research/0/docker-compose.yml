@@ -25,7 +25,7 @@ services:
   apache:
     image: loom.nersc.gov:5000/csnavely/php:5.6-apache-mysqli
     environment:
-      DB_PASSWORD: ${mysql_password}
+      MYSQL_PASSWORD: ${mysql_password}
       RESEARCH_AREA: ${research_area}
     stdin_open: true
     volumes:
