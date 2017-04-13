@@ -1,6 +1,6 @@
 name: My Research Portal
 description: |
-  A simple PHP/MySQL web site for demonstrating the Spin system.
+  A pre-packaged, pretend research portal based on PHP and MySQL for the Spin Hands-on Demo.
 version: v1.0.0
 category: Training and Workshops
 maintainer: NERSC Infrastructure Services Group
