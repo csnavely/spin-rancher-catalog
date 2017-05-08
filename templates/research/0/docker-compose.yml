@@ -1,7 +1,7 @@
 version: '2'
 services:
   lb:
-    image: rancher/lb-service-haproxy
+    image: rancher/lb-service-haproxy:latest
     ports:
     - ${web_server_port}:${web_server_port}/tcp
     links:
