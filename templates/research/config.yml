@@ -1,6 +1,6 @@
 name: My Research Portal
 description: |
   A pre-packaged, pretend research portal based on PHP and MySQL for the Spin Hands-on Demo.
-version: v1.0.0
+version: v1.0.1
 category: Training and Workshops
 maintainer: NERSC Infrastructure Services Group
